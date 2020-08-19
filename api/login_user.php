@@ -2,7 +2,7 @@
 require '../config/koneksi.php';
 
 $loginRequest = json_decode(file_get_contents('php://input'));
-$query = "SELECT * FROM `driver` WHERE `email`=\"" . $loginRequest->email . "\" AND `password`=\"" . $loginRequest->password ."\"";
+$query = "SELECT * FROM `user` WHERE `email`=\"" . $loginRequest->email . "\" AND `password`=\"" . $loginRequest->password ."\"";
 $result = mysqli_query($konek, $query);
 
 $resultExist = $result->num_rows > 0;
