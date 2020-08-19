@@ -31,7 +31,7 @@ if ($result->num_rows > 0) {
             'driverName'=>$row['nama_driver'],
             'driverPhoneNumber'=>$row['no_handphone'],
             'seatBooked'=>$row['kursi_pesanan'],
-            'price'=>$row['harga_tiket'],
+            'totalPrice'=>$row['harga_tiket'] * $row['kursi_pesanan'],
             'datetime'=>$row['waktu_keberangkatan'],
             'longitude'=>$row['longitude'],
             'latitude'=>$row['latitude'],
