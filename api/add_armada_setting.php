@@ -2,10 +2,11 @@
 require '../config/koneksi.php';
 
 $loginRequest = json_decode(file_get_contents('php://input'));
-$query = "INSERT INTO `armada` (driver_id, waktu_keberangkatan, harga_tiket, jumlah_kursi, kursi_tersedia, catatan)
+$query = "INSERT INTO `armada` (driver_id, waktu_keberangkatan, kelas, harga_tiket, jumlah_kursi, kursi_tersedia, catatan)
 VALUES (
     \"$loginRequest->driverId\", 
     \"$loginRequest->datetime\", 
+    \"$loginRequest->armadaClass\", 
     \"$loginRequest->price\", 
     \"$loginRequest->seatAmount\", 
     \"$loginRequest->seatAmount\", 
