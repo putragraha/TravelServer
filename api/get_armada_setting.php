@@ -27,7 +27,7 @@ if ($result->num_rows > 0) {
 		array_push($resultArray, array(
             'armadaId'=>$row['id'],
             'driverId'=>$row['driver_id'],
-            'photoUrl'=>$row['foto_driver'],
+            'photoName'=>$row['foto_driver'],
             'datetime'=>$row['waktu_keberangkatan'],
             'price'=>$row['harga_tiket'],
             'seatAmount'=>$row['jumlah_kursi'],
