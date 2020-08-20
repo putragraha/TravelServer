@@ -2,12 +2,18 @@
 require '../config/koneksi.php';
 
 $loginRequest = json_decode(file_get_contents('php://input'));
-$query = "UPDATE `user` 
-    SET `password`=\"" . $loginRequest->password . "\"
-    WHERE `id`=\"" . $loginRequest->id . "\"";
-$result = mysqli_query($konek, $query);
+$query = "SELECT * FROM `user` 
+    WHERE `id`=\"$loginRequest->id\" 
+    AND `password`=\"$loginRequest->oldPassword\"";
+$queryResult = mysqli_query($konek, $query);
 
-echo json_encode(array('success'=>$result > 0)); 
+$updateQuery = "UPDATE `user` 
+    SET `password`=\"$loginRequest->newPassword\"
+    WHERE `id`=\"$loginRequest->id\" 
+    AND `password`=\"$loginRequest->oldPassword\"";
+$updateResult = mysqli_query($konek, $updateQuery);
+
+echo json_encode(array('success'=>$queryResult->num_rows > 0 && $updateResult > 0)); 
 
 $konek->close();
 ?>
