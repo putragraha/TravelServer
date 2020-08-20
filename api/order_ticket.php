@@ -15,7 +15,7 @@ VALUES (
 $insertResult = mysqli_query($konek, $query);
 
 $updateArmadaQuery = "UPDATE `armada` 
-    SET `kursi_tersedia`=`kursi_tersedia` - 1
+    SET `kursi_tersedia`=`kursi_tersedia` - $loginRequest->seatBooked
     WHERE `id`=\"" . $loginRequest->armadaId . "\"
     AND `kursi_tersedia` > 0";
 $updateArmadaResult = mysqli_query($konek, $updateArmadaQuery);
