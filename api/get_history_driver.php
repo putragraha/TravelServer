@@ -16,7 +16,7 @@ $query = "SELECT
     INNER JOIN `armada` ON `pemesanantiket`.`armada_id` = `armada`.`id`
     INNER JOIN `driver` ON `armada`.`driver_id` = `driver`.`id`
     INNER JOIN `user` ON `pemesanantiket`.`user_id` = `user`.`id`
-    WHERE `driver`.`id` = $loginRequest->driverId";
+    WHERE `driver`.`id` = $loginRequest->id";
 $result = mysqli_query($konek, $query);
 $resultArray = array();
 
