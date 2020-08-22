@@ -1,6 +1,8 @@
 <?php 
 require '../config/koneksi.php';
 
+const ACCEPTED = "ACCEPTED";
+
 const REJECTED = "REJECTED";
 
 $request = json_decode(file_get_contents('php://input'));
@@ -15,6 +17,8 @@ if (REJECTED == $request->status) {
     AND `pemesanantiket`.`kode_pemesanan`=\"$request->orderCode\"";
     
     $updateSeatResult = mysqli_query($konek, $updateSeatQuery);
+} else if (ACCEPTED == $request->status) {
+    $updateSeatResult = 1;
 }
 
 $updateStatusQuery = "UPDATE `pemesanantiket`
