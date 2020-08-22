@@ -14,7 +14,8 @@ $query = "SELECT
     `armada`.`waktu_keberangkatan` as `waktu_keberangkatan`,
     `pemesanantiket`.`longitude` as `longitude`,
     `pemesanantiket`.`latitude` as `latitude`,
-    `pemesanantiket`.`catatan` as `catatan`
+    `pemesanantiket`.`catatan` as `catatan`,
+    `pemesanantiket`.`status` as `status`
     FROM `pemesanantiket` 
     INNER JOIN `armada` ON `pemesanantiket`.`armada_id` = `armada`.`id`
     INNER JOIN `driver` ON `armada`.`driver_id` = `driver`.`id`
@@ -37,6 +38,7 @@ if ($result->num_rows > 0) {
             'datetime'=>$row['waktu_keberangkatan'],
             'longitude'=>$row['longitude'],
             'latitude'=>$row['latitude'],
+            'status'=>$row['status'],
             'note'=>$row['catatan']
         ));
 	}
