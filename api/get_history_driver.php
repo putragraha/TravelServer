@@ -11,6 +11,7 @@ $query = "SELECT
     `armada`.`harga_tiket` as `harga_tiket`,
     `pemesanantiket`.`longitude` as `longitude`,
     `pemesanantiket`.`latitude` as `latitude`,
+    `pemesanantiket`.`status` as `status`,
     `pemesanantiket`.`catatan` as `catatan`
     FROM `pemesanantiket` 
     INNER JOIN `armada` ON `pemesanantiket`.`armada_id` = `armada`.`id`
@@ -31,6 +32,7 @@ if ($result->num_rows > 0) {
             'totalPrice'=>$row['harga_tiket'] * $row['kursi_pesanan'],
             'longitude'=>$row['longitude'],
             'latitude'=>$row['latitude'],
+            'status'=>$row['status'],
             'note'=>$row['catatan']
         ));
 	}
