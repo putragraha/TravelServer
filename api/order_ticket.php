@@ -1,8 +1,10 @@
 <?php 
 require '../config/koneksi.php';
 
+const PENDING = "PENDING";
+
 $loginRequest = json_decode(file_get_contents('php://input'));
-$query = "INSERT INTO `pemesanantiket` (kode_pemesanan, user_id, armada_id, kursi_pesanan, catatan, latitude, longitude)
+$query = "INSERT INTO `pemesanantiket` (kode_pemesanan, user_id, armada_id, kursi_pesanan, catatan, latitude, longitude, status)
 VALUES (
     \"" . round(microtime(true) * 1000) . "\", 
     $loginRequest->userId, 
@@ -10,7 +12,8 @@ VALUES (
     $loginRequest->seatBooked, 
     \"$loginRequest->note\", 
     $loginRequest->latitude, 
-    $loginRequest->longitude
+    $loginRequest->longitude,
+    \"" . PENDING . "\"
 )";
 $insertResult = mysqli_query($konek, $query);
 
