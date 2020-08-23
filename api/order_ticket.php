@@ -9,7 +9,7 @@ $updateArmadaQuery = "UPDATE `armada`
     SET `kursi_tersedia`=`kursi_tersedia` - $request->seatBooked
     WHERE `id`=\"" . $request->armadaId . "\"
     AND `kursi_tersedia` > 0
-    AND `kursi_tersedia` > $request->seatBooked";
+    AND `kursi_tersedia` >= $request->seatBooked";
 $updateArmadaResult = mysqli_query($konek, $updateArmadaQuery);
 
 $insertResult = 0;
