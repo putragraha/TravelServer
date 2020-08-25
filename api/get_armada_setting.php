@@ -12,6 +12,7 @@ $query = "SELECT
     `armada`.`catatan` as `catatan`,
     `driver`.`nama_driver` as `nama_driver`,
     `driver`.`tim_travel` as `tim_travel`,
+    `driver`.`nama_mobil` as `nama_mobil`,
     `driver`.`mobil` as `mobil`,
     `armada`.`kelas` as `kelas`,
     `driver`.`no_handphone` as `no_handphone`
@@ -35,6 +36,7 @@ if ($result->num_rows > 0) {
             'note'=>$row['catatan'],
             'driverName'=>$row['nama_driver'],
             'group'=>$row['tim_travel'],
+            'carName'=>$row['nama_mobil'],
             'car'=>$row['mobil'],
             'armadaClass'=>$row['kelas'],
             'driverPhoneNumber'=>$row['no_handphone']
