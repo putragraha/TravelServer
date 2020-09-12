@@ -1,16 +1,19 @@
 <?php 
 require '../config/koneksi.php';
 
-$loginRequest = json_decode(file_get_contents('php://input'));
-$query = "INSERT INTO `armada` (driver_id, waktu_keberangkatan, kelas, harga_tiket, jumlah_kursi, kursi_tersedia, catatan)
+$request = json_decode(file_get_contents('php://input'));
+$query = "INSERT INTO `armada` (driver_id, waktu_keberangkatan, kelas, harga_tiket, 
+jumlah_kursi, kursi_tersedia, kota_asal, kota_tujuan, catatan)
 VALUES (
-    \"$loginRequest->driverId\", 
-    \"$loginRequest->datetime\", 
-    \"$loginRequest->armadaClass\", 
-    \"$loginRequest->price\", 
-    \"$loginRequest->seatAmount\", 
-    \"$loginRequest->seatAmount\", 
-    \"$loginRequest->note\"
+    \"$request->driverId\", 
+    \"$request->datetime\", 
+    \"$request->armadaClass\", 
+    \"$request->price\", 
+    \"$request->seatAmount\", 
+    \"$request->seatAmount\", 
+    \"$request->departure\", 
+    \"$request->arrival\", 
+    \"$request->note\"
 )";
 $result = mysqli_query($konek, $query);
 
