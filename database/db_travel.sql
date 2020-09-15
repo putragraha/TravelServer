@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Aug 24, 2020 at 02:02 AM
+-- Generation Time: Sep 15, 2020 at 05:42 PM
 -- Server version: 10.4.13-MariaDB
 -- PHP Version: 7.4.7
 
@@ -54,6 +54,8 @@ INSERT INTO `admin` (`id`, `nama_admin`, `foto`, `email`, `password`) VALUES
 CREATE TABLE `armada` (
   `id` int(11) NOT NULL,
   `driver_id` int(11) NOT NULL,
+  `kota_asal` varchar(50) NOT NULL,
+  `kota_tujuan` varchar(50) NOT NULL,
   `waktu_keberangkatan` varchar(20) NOT NULL,
   `kelas` varchar(20) DEFAULT NULL,
   `harga_tiket` int(11) NOT NULL,
@@ -66,15 +68,17 @@ CREATE TABLE `armada` (
 -- Dumping data for table `armada`
 --
 
-INSERT INTO `armada` (`id`, `driver_id`, `waktu_keberangkatan`, `kelas`, `harga_tiket`, `jumlah_kursi`, `kursi_tersedia`, `catatan`) VALUES
-(1, 15, '1597824426000', 'Eksekutif', 160000, 5, 0, ''),
-(2, 15, '1597824426000', 'Eksekutif', 160000, 5, 2, ''),
-(3, 15, '1597824426300', 'Ekonomi', 120000, 7, 4, ''),
-(4, 15, '1597824426303', 'Ekonomi', 120000, 7, 2, ''),
-(10, 15, '1597899000000', '', 150000, 5, 3, 'oke'),
-(11, 15, '1597899000000', '', 150000, 5, 4, 'oke'),
-(12, 15, '1597899540000', '', 100000, 7, 3, ''),
-(13, 15, '1597899960000', '', 100000, 10, 3, '');
+INSERT INTO `armada` (`id`, `driver_id`, `kota_asal`, `kota_tujuan`, `waktu_keberangkatan`, `kelas`, `harga_tiket`, `jumlah_kursi`, `kursi_tersedia`, `catatan`) VALUES
+(1, 15, 'Pekanbaru', 'Rengat', '1597824426000', 'Eksekutif', 160000, 5, 0, ''),
+(2, 15, 'Pekanbaru', 'Rengat', '1597824426000', 'Eksekutif', 160000, 5, 2, ''),
+(3, 15, 'Pekanbaru', 'Rengat', '1597824426300', 'Ekonomi', 120000, 7, 4, ''),
+(4, 15, 'Pekanbaru', 'Rengat', '1597824426303', 'Ekonomi', 120000, 7, 2, ''),
+(10, 15, 'Pekanbaru', 'Rengat', '1597899000000', '', 150000, 5, 3, 'oke'),
+(11, 15, 'Pekanbaru', 'Rengat', '1597899000000', '', 150000, 5, 4, 'oke'),
+(12, 15, 'Pekanbaru', 'Rengat', '1597899540000', '', 100000, 7, 3, ''),
+(13, 15, 'Pekanbaru', 'Rengat', '1597899960000', '', 100000, 10, 3, ''),
+(14, 15, 'Rengat', 'Pekanbaru', '1597824426444', 'Ekonomi', 360000, 7, 7, ''),
+(15, 15, 'Rengat', 'Pekanbaru', '1600103700000', '', 200000, 5, 5, '');
 
 -- --------------------------------------------------------
 
@@ -91,6 +95,7 @@ CREATE TABLE `driver` (
   `foto_skck` varchar(1000) NOT NULL,
   `no_handphone` varchar(30) NOT NULL,
   `no_rekening` varchar(100) NOT NULL,
+  `nama_mobil` varchar(100) DEFAULT NULL,
   `mobil` varchar(1000) NOT NULL,
   `tim_travel` varchar(1000) NOT NULL,
   `tempat_duduk` varchar(10) NOT NULL,
@@ -103,8 +108,8 @@ CREATE TABLE `driver` (
 -- Dumping data for table `driver`
 --
 
-INSERT INTO `driver` (`id`, `nama_driver`, `foto_driver`, `foto_sim`, `foto_stnk`, `foto_skck`, `no_handphone`, `no_rekening`, `mobil`, `tim_travel`, `tempat_duduk`, `kelas`, `email`, `password`) VALUES
-(15, 'Tio Indria Yusman', 'Fairy Tail - 2.jpg', 'Fairy Tail - 2.jpg', 'Fairy Tail - 3.jpg', 'Fairy Tail - 4.jpg', '082288419155', '123123123', 'Fairy Tail - 5.jpg', 'Neptuunia', '10', 'Super VVIP', 'tio@gmail.com', '12345');
+INSERT INTO `driver` (`id`, `nama_driver`, `foto_driver`, `foto_sim`, `foto_stnk`, `foto_skck`, `no_handphone`, `no_rekening`, `nama_mobil`, `mobil`, `tim_travel`, `tempat_duduk`, `kelas`, `email`, `password`) VALUES
+(15, 'Tio Indria Yusman', 'Fairy Tail - 2.jpg', 'Fairy Tail - 2.jpg', 'Fairy Tail - 3.jpg', 'Fairy Tail - 4.jpg', '082288419155', '123123123', 'Toyota Innova Reborn', 'Fairy Tail - 6.png', 'Neptuunia', '10', 'Super VVIP', 'tio@gmail.com', '12345');
 
 -- --------------------------------------------------------
 
@@ -220,7 +225,7 @@ ALTER TABLE `admin`
 -- AUTO_INCREMENT for table `armada`
 --
 ALTER TABLE `armada`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT for table `driver`
